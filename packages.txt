@@ -1,2 +1,4 @@
-libgl1
--y libgl1-mesa-glx
+build-essential
+pkg-config
+default-libmysqlclient-dev
+libgl1-mesa-glx
