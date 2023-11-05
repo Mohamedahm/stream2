@@ -7,9 +7,9 @@ import math
 import streamlit as st
 import cvzone
 import time 
-import sounddevice as sd
-from scipy.io.wavfile import write
-import wavio as wv
+#import sounddevice as sd
+#from scipy.io.wavfile import write
+#import wavio as wv
 import datetime
 
 model = YOLO("yolo-Weights/yolov8s.pt")
@@ -31,7 +31,7 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
                ]
 
 
-
+"""
 def recording():
     freq = 44100
     duration = 10
@@ -40,6 +40,7 @@ def recording():
     sd.wait()
     write("recording0.wav", freq, recording)
     wv.write("recording1.wav", recording, freq, sampwidth=2)
+   """
     
     
 def overlay_image():
@@ -141,7 +142,7 @@ def second_page():
     st.title("Khutba Page")
     st.write("بسم الله الرحمن الرحيم")
     time.sleep(5)
-    recording()
+    #recording()
     
 
 # App routing
