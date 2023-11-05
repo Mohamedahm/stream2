@@ -1,2 +1,2 @@
 libgl1-mesa-glx
-opencv-python
+libgtk2.0-dev
