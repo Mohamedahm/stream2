@@ -8,3 +8,4 @@ skia-python
 Mesa
 glcontext
 libigl
+ffmpeg
