@@ -57,7 +57,7 @@ def video_frame_callback(frame):
     return av.VideoFrame.from_ndarray(img, format="bgr24")
 
 webrtc_streamer(key="example", video_frame_callback=video_frame_callback,
-                video_processor_factory=VideoProcess,
+                video_processor_factory=video_frame_callback,
                 mode=WebRtcMode.SENDRECV,
                 media_stream_constraints={"video": True, "audio": False},
                 async_processing=True,
