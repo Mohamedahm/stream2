@@ -1,6 +1,6 @@
 from streamlit_webrtc import webrtc_streamer
 import av
-# import cv2
+import cv2
 import numpy as np
 from ultralytics import YOLO
 import math
