@@ -4,3 +4,4 @@ numpy
 ultralytics
 opencv-python
 streamlit
+libgl1-mesa-dev
