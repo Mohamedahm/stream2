@@ -4,4 +4,7 @@ numpy
 ultralytics
 opencv-python
 streamlit
-import cv2
+skia-python
+Mesa
+glcontext
+libigl
