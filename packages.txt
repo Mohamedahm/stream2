@@ -5,3 +5,4 @@ install libsm6
 install libxext6
 install -y libgl1-mesa-glx
 install python-opencv
+opencv_contrib_python
