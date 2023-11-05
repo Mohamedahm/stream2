@@ -95,9 +95,9 @@ thop==0.1.1.post2209072238
 tiktoken==0.3.3
 toml==0.10.2
 toolz==0.12.0
-torch==2.1.0+cu121
-torchaudio==2.1.0+cu121
-torchvision==0.16.0+cu121
+torch
+torchaudio
+torchvision
 tornado==6.3.3
 tqdm==4.66.1
 trio==0.22.2
