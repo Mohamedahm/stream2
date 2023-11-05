@@ -1,6 +1,6 @@
 from streamlit_webrtc import webrtc_streamer
 import av
-import cv2
+# import cv2
 import numpy as np
 from ultralytics import YOLO
 import math
@@ -55,6 +55,5 @@ def video_frame_callback(frame):
                     cv2.putText(img, classNames[cls], org, font, fontScale, color, thickness)
         
     return av.VideoFrame.from_ndarray(img, format="bgr24")
-
 
 webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
