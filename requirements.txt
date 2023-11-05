@@ -2,11 +2,4 @@ streamlit_webrtc
 opencv-python-headless==4.5.3.56
 numpy
 ultralytics
-opencv-python
-streamlit
-skia-python
-Mesa
-glcontext
-libigl
-ffmpeg
-opencv_contrib_python
+
