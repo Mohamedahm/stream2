@@ -1,8 +1,8 @@
-install libgl1-mesa-glx
-install libgtk2.0-dev
-install ffmpeg
-install libsm6
-install libxext6
-install -y libgl1-mesa-glx
-install python-opencv
+libgl1-mesa-glx
+libgtk2.0-dev
+ffmpeg
+libsm6
+libxext6
+libgl1-mesa-glx
+python-opencv
 opencv_contrib_python
