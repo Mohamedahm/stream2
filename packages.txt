@@ -5,5 +5,4 @@ ffmpeg
 libsm6
 libxext6
 libgl1-mesa-glx
-python-opencv
-opencv_contrib_python
+
