@@ -1,1 +1,2 @@
 libgl1
+-y libgl1-mesa-glx
