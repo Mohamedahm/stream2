@@ -7,7 +7,7 @@ import math
 import streamlit as st
 import cvzone
 import time 
-# import sounddevice as sd
+import sounddevice as sd
 from scipy.io.wavfile import write
 import wavio as wv
 import datetime
@@ -35,27 +35,27 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
 
 
 
-# def recording():
-#     freq = 44100
-#     duration = 10
+def recording():
+    freq = 44100
+    duration = 10
 
-#     recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
-#     sd.wait()
-#     write("recording0.wav", freq, recording)
-#     wv.write("recording1.wav", recording, freq, sampwidth=2)
+    recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
+    sd.wait()
+    write("recording0.wav", freq, recording)
+    wv.write("recording1.wav", recording, freq, sampwidth=2)
  
 
-def recording(filename, duration=5, sample_rate=44100):
-    print("Recording audio...")
-    audio_data = []
+# def recording(filename, duration=5, sample_rate=44100):
+#     print("Recording audio...")
+#     audio_data = []
 
-    with sf.SoundFile(filename, mode='w', samplerate=sample_rate, channels=1, format='wav') as file:
-        for _ in range(int(duration * sample_rate)):
-            audio_sample = np.random.randn()  # Replace with your audio capture logic
-            audio_data.append(audio_sample)
-            file.write(audio_sample)
+#     with sf.SoundFile(filename, mode='w', samplerate=sample_rate, channels=1, format='wav') as file:
+#         for _ in range(int(duration * sample_rate)):
+#             audio_sample = np.random.randn()  # Replace with your audio capture logic
+#             audio_data.append(audio_sample)
+#             file.write(audio_sample)
 
-    print("Recording complete.")    
+#     print("Recording complete.")    
     
 def overlay_image():
     imgBack = cv2.imread("captured_frame.png")
@@ -157,7 +157,8 @@ def second_page():
     st.write("بسم الله الرحمن الرحيم")
     time.sleep(5)
     output_filename = "recorded_audio.wav"
-    recording(output_filename)
+    # recording(output_filename)
+    recording()
 
     recognizer = speech_recognition.Recognizer()
     audio_file = "recorded_audio.wav"  
