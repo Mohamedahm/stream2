@@ -112,4 +112,4 @@ watchdog==3.0.0
 wavio==0.0.8
 whisper==1.1.10
 wsproto==1.2.0
-
+soundfile
