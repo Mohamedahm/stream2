@@ -7,7 +7,7 @@ import math
 import streamlit as st
 import cvzone
 import time 
-import sounddevice as sd
+# import sounddevice as sd
 from scipy.io.wavfile import write
 import wavio as wv
 import datetime
@@ -37,7 +37,7 @@ def recording():
     duration = 10
 
     recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
-    sd.wait()
+    #sd.wait()
     write("recording0.wav", freq, recording)
     wv.write("recording1.wav", recording, freq, sampwidth=2)
  
