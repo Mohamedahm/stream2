@@ -11,6 +11,7 @@ import time
 from scipy.io.wavfile import write
 import wavio as wv
 import datetime
+import soundfile as sf
 
 model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
