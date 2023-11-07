@@ -7,9 +7,9 @@ import math
 import streamlit as st
 import cvzone
 import time 
-#import sounddevice as sd
-#from scipy.io.wavfile import write
-#import wavio as wv
+import sounddevice as sd
+from scipy.io.wavfile import write
+import wavio as wv
 import datetime
 
 model = YOLO("yolo-Weights/yolov8s.pt")
