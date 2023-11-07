@@ -19,6 +19,7 @@ model = YOLO("yolo-Weights/yolov8s.pt")
 if 'stop_clicked' not in st.session_state:
     st.session_state['stop_clicked'] = False
 
+count = 0
  # object classes
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
                "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
