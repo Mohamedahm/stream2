@@ -142,7 +142,7 @@ def main_page():
     webrtc_ctx = webrtc_streamer(key="example2",
                                  video_frame_callback=video_frame_callback,
                                  rtc_configuration=rtc_configuration,
-                                 media_stream_constraints={"video": True, "audio": False},
+                                 media_stream_constraints={"video": True, "audio": True},
                                  async_processing=True)
 
     # Stop button
