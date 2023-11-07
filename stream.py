@@ -31,7 +31,7 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
                ]
 
 
-"""
+
 def recording():
     freq = 44100
     duration = 10
@@ -40,7 +40,7 @@ def recording():
     sd.wait()
     write("recording0.wav", freq, recording)
     wv.write("recording1.wav", recording, freq, sampwidth=2)
-   """
+ 
     
     
 def overlay_image():
