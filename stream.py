@@ -12,6 +12,7 @@ from scipy.io.wavfile import write
 import wavio as wv
 import datetime
 import soundfile as sf
+import speech_recognition
 
 model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
