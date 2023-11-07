@@ -142,7 +142,7 @@ def second_page():
     st.title("Khutba Page")
     st.write("بسم الله الرحمن الرحيم")
     time.sleep(5)
-    #recording()
+    recording()
     
 
 # App routing
