@@ -156,6 +156,46 @@ def second_page():
     time.sleep(5)
     output_filename = "recorded_audio.wav"
     recording(output_filename)
+
+    recognizer = speech_recognition.Recognizer()
+    audio_file = "recorded_audio.wav"  
+    
+    
+
+    def process_audio(audio_data):
+        global count
+        try:
+            text = recognizer.recognize_google(audio_data, language='ar')
+            text = text.lower()
+            
+            st.write(text)
+            
+        except speech_recognition.UnknownValueError:
+            print("Google Speech Recognition could not understand audio")
+            count+=1
+            print(count)
+            
+            
+        except speech_recognition.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+
+    with speech_recognition.AudioFile(audio_file) as source:
+       # recognizer.adjust_for_ambient_noise(source)
+        recognizer.adjust_for_ambient_noise(source, duration=5)
+
+        while True:
+            try:
+                audio = recognizer.listen(source, timeout=5.0, phrase_time_limit=7)
+                process_audio(audio)
+                # count +=1 
+                if count== 10:
+                    break
+                
+            except speech_recognition.WaitTimeoutError:
+                print("End of Audio File")
+                break
+        
+
     
 
 # App routing
