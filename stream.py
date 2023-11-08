@@ -163,12 +163,12 @@ def second_page():
     st.title("Khutba Page")
     st.write("بسم الله الرحمن الرحيم")
     time.sleep(5)
-    output_filename = "recorded_audio.wav"
+    # output_filename = "recorded_audio.wav"
     # recording(output_filename)
     recording()
 
     recognizer = speech_recognition.Recognizer()
-    audio_file = "recorded_audio.wav"  
+    audio_file = "recording1.wav"  
     
     
 
