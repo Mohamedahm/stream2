@@ -134,7 +134,7 @@ def video_frame_callback(frame):
 
 # Page layout
 def main_page():
-    st.title("Object Detection Stream")
+    st.title("Home")
     # Define RTC Configuration if needed
     rtc_configuration = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
 
