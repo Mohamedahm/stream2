@@ -39,15 +39,17 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
 def recording():
     freq = 44100
     duration = 10
+    recording = None
 
     try:
          # Attempt to record audio
          recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
     except sounddevice.PortAudioError as e:
         print(f"An error occurred with the audio device: {e}")
-    sd.wait()
-    write("recording0.wav", freq, recording)
-    wv.write("recording1.wav", recording, freq, sampwidth=2)
+    #sd.wait()
+    if recording is not None:
+        write("recording0.wav", freq, recording)
+        wv.write("recording1.wav", recording, freq, sampwidth=2)
  
 
 # def recording(filename, duration=5, sample_rate=44100):
