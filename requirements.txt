@@ -114,3 +114,4 @@ whisper==1.1.10
 wsproto==1.2.0
 soundfile
 PyAudio
+streamlit-audiorec
