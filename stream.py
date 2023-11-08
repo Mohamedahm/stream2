@@ -200,8 +200,7 @@ def second_page():
     time.sleep(5)
     # output_filename = "recorded_audio.wav"
     # recording(output_filename)
-    st.set_page_config(page_title="streamlit_audio_recorder")
-    # Design move app further up and remove top padding
+    
     st.markdown('''<style>.css-1egvi7u {margin-top: -3rem;}</style>''',
                 unsafe_allow_html=True)
     # Design change st.Audio to fixed height of 45 pixels
