@@ -39,7 +39,11 @@ def recording():
     freq = 44100
     duration = 10
 
-    recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
+    try:
+         # Attempt to record audio
+         recording = sd.rec(int(duration * freq), samplerate=freq, channels=2)
+    except sounddevice.PortAudioError as e:
+        print(f"An error occurred with the audio device: {e}")
     sd.wait()
     write("recording0.wav", freq, recording)
     wv.write("recording1.wav", recording, freq, sampwidth=2)
