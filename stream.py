@@ -272,7 +272,7 @@ def second_page():
         # bytes_data = audio_file_name.getvalue()
     
         # Show the image filename and image.
-        st.write(f'filename: {audio_file_name.name}')
+        # st.write(f'filename: {audio_file_name.name}')
         st.audio(bytes_data)
     
         # Upload the image to deta using put with filename and data.
