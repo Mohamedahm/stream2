@@ -269,7 +269,7 @@ def second_page():
         # Optionally, clean up the audio file after processing
 
         # If user attempts to upload a file.
-        bytes_data = audio_file_name.getvalue()
+        # bytes_data = audio_file_name.getvalue()
     
         # Show the image filename and image.
         st.write(f'filename: {audio_file_name.name}')
@@ -277,7 +277,7 @@ def second_page():
     
         # Upload the image to deta using put with filename and data.
         drive.put(audio_file_name.name, data=bytes_data)
-        os.remove(audio_file_name)
+        # os.remove(audio_file_name)
     
     
 
