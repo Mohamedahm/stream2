@@ -17,12 +17,14 @@ import speech_recognition
 from st_audiorec import st_audiorec
 import speech_recognition as sr
 import os
+from deta import Deta
 
 model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
 if 'stop_clicked' not in st.session_state:
     st.session_state['stop_clicked'] = False
 
+db = deta.Base("myspacedata")
 count = 0
  # object classes
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
@@ -255,7 +257,7 @@ def second_page():
     if audio_file_name is not None:
         text = process_audio(audio_file_name)
         st.write(text)
-
+        db.put(audio_file_name)
         # Optionally, clean up the audio file after processing
         os.remove(audio_file_name)
     
