@@ -36,39 +36,70 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
                ]
 
 
-
 def audiorec_demo_app():
+    st.title('Streamlit Audio Recorder')
 
-    # TITLE and Creator information
-    st.title('streamlit audio recorder')
-    st.markdown('Implemented by '
-        '[Stefan Rummer](https://www.linkedin.com/in/stefanrmmr/) - '
-        'view project source code on '
-                
-        '[GitHub](https://github.com/stefanrmmr/streamlit-audio-recorder)')
-    st.write('\n\n')
-
-    # TUTORIAL: How to use STREAMLIT AUDIO RECORDER?
-    # by calling this function an instance of the audio recorder is created
-    # once a recording is completed, audio data will be saved to wav_audio_data
-
-    wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    # add some spacing and informative messages
-    col_info, col_space = st.columns([0.57, 0.43])
-    with col_info:
-        st.write('\n')  # add vertical spacer
-        st.write('\n')  # add vertical spacer
-        st.write('The .wav audio data, as received in the backend Python code,'
-                 ' will be displayed below this message as soon as it has'
-                 ' been processed. [This informative message is not part of'
-                 ' the audio recorder and can be removed easily] 🎈')
+    wav_audio_data = st_audiorec()  # Assuming st_audiorec() is properly defined elsewhere
 
     if wav_audio_data is not None:
-        # display audio data as received on the Python side
-        col_playback, col_space = st.columns([0.58,0.42])
-        with col_playback:
-            st.audio(wav_audio_data, format='audio/wav')
+        st.audio(wav_audio_data, format='audio/wav')
+        
+        
+    return wav_audio_data
+
+def save_audio(wav_bytes):
+    if wav_bytes is not None:
+        # Save the WAV audio data to a file
+        audio_file_name = 'temp_audio.wav'
+        with open(audio_file_name, 'wb') as f:
+            f.write(wav_bytes)
+        return audio_file_name
+    return None
+
+def process_audio(file_name):
+    recognizer = sr.Recognizer()
+    with sr.AudioFile(file_name) as source:
+        audio_data = recognizer.record(source)  # Record the data from the entire file
+        try:
+            text = recognizer.recognize_google(audio_data, language='ar')
+            return text.lower()
+        except sr.UnknownValueError:
+            return "Google Speech Recognition could not understand audio"
+        except sr.RequestError as e:
+            return f"Could not request results from Google Speech Recognition service; {e}"
+        
+# def audiorec_demo_app():
+
+#     # TITLE and Creator information
+#     st.title('streamlit audio recorder')
+#     st.markdown('Implemented by '
+#         '[Stefan Rummer](https://www.linkedin.com/in/stefanrmmr/) - '
+#         'view project source code on '
+                
+#         '[GitHub](https://github.com/stefanrmmr/streamlit-audio-recorder)')
+#     st.write('\n\n')
+
+#     # TUTORIAL: How to use STREAMLIT AUDIO RECORDER?
+#     # by calling this function an instance of the audio recorder is created
+#     # once a recording is completed, audio data will be saved to wav_audio_data
+
+#     wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
+
+#     # add some spacing and informative messages
+#     col_info, col_space = st.columns([0.57, 0.43])
+#     with col_info:
+#         st.write('\n')  # add vertical spacer
+#         st.write('\n')  # add vertical spacer
+#         st.write('The .wav audio data, as received in the backend Python code,'
+#                  ' will be displayed below this message as soon as it has'
+#                  ' been processed. [This informative message is not part of'
+#                  ' the audio recorder and can be removed easily] 🎈')
+
+#     if wav_audio_data is not None:
+#         # display audio data as received on the Python side
+#         col_playback, col_space = st.columns([0.58,0.42])
+#         with col_playback:
+#             st.audio(wav_audio_data, format='audio/wav')
 
 
 def recording():
@@ -213,44 +244,53 @@ def second_page():
                 unsafe_allow_html=True)  # lightmode
 
     #recording()
-    audiorec_demo_app()
-    recognizer = speech_recognition.Recognizer()
-    audio_file = "recording1.wav"  
+    # audiorec_demo_app()
+    # recognizer = speech_recognition.Recognizer()
+    # audio_file = "recording1.wav"  
+    wav_bytes = audiorec_demo_app()  # Ensure that this function returns the audio bytes
+    audio_file_name = save_audio(wav_bytes)
+    
+    if audio_file_name is not None:
+        text = process_audio(audio_file_name)
+        st.write(text)
+
+        # Optionally, clean up the audio file after processing
+        os.remove(audio_file_name)
     
     
 
-    def process_audio(audio_data):
-        global count
-        try:
-            text = recognizer.recognize_google(audio_data, language='ar')
-            text = text.lower()
+    # def process_audio(audio_data):
+    #     global count
+    #     try:
+    #         text = recognizer.recognize_google(audio_data, language='ar')
+    #         text = text.lower()
             
-            st.write(text)
+    #         st.write(text)
             
-        except speech_recognition.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
-            count+=1
-            print(count)
+    #     except speech_recognition.UnknownValueError:
+    #         print("Google Speech Recognition could not understand audio")
+    #         count+=1
+    #         print(count)
             
             
-        except speech_recognition.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    #     except speech_recognition.RequestError as e:
+    #         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-    with speech_recognition.AudioFile(audio_file) as source:
-       # recognizer.adjust_for_ambient_noise(source)
-        recognizer.adjust_for_ambient_noise(source, duration=5)
+    # with speech_recognition.AudioFile(audio_file) as source:
+    #    # recognizer.adjust_for_ambient_noise(source)
+    #     recognizer.adjust_for_ambient_noise(source, duration=5)
 
-        while True:
-            try:
-                audio = recognizer.listen(source, timeout=5.0, phrase_time_limit=7)
-                process_audio(audio)
-                # count +=1 
-                if count== 10:
-                    break
+    #     while True:
+    #         try:
+    #             audio = recognizer.listen(source, timeout=5.0, phrase_time_limit=7)
+    #             process_audio(audio)
+    #             # count +=1 
+    #             if count== 10:
+    #                 break
                 
-            except speech_recognition.WaitTimeoutError:
-                print("End of Audio File")
-                break
+    #         except speech_recognition.WaitTimeoutError:
+    #             print("End of Audio File")
+    #             break
         
 
     
