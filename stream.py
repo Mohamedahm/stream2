@@ -325,6 +325,6 @@ def second_page():
 #     second_page()
     
     
-else:
-    main_page()
+    else:
+         main_page()
 
