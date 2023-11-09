@@ -31,6 +31,18 @@ project = Deta("d0l6q5gedtr_iUApirur9uViehT3GgPqDStDGyj7xWRF")
 drive_name = 'myspacedrive'
 drive = project.Drive(drive_name)
 uploaded_file = st.file_uploader("Choose a file")
+
+# If user attempts to upload a file.
+if uploaded_file is not None:
+    bytes_data = uploaded_file.getvalue()
+
+    # Show the image filename and image.
+    st.write(f'filename: {uploaded_file.name}')
+    st.image(bytes_data)
+
+    # Upload the image to deta using put with filename and data.
+    drive.put(uploaded_file.name, data=bytes_data)
+
 count = 0
  # object classes
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
