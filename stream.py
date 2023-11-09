@@ -344,7 +344,7 @@ def main():
         # Reset session state variables
         st.session_state['stop_clicked'] = False
 
-         overlay_image()
+        overlay_image()
         time.sleep(5)
         second_page()
    else:
