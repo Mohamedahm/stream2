@@ -38,7 +38,7 @@ if uploaded_file is not None:
 
     # Show the image filename and image.
     st.write(f'filename: {uploaded_file.name}')
-    st.image(bytes_data)
+    st.audio(bytes_data)
 
     # Upload the image to deta using put with filename and data.
     drive.put(uploaded_file.name, data=bytes_data)
