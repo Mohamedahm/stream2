@@ -115,3 +115,4 @@ wsproto==1.2.0
 soundfile
 PyAudio
 streamlit-audiorec
+deta
