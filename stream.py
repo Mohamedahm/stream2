@@ -318,13 +318,12 @@ def second_page():
     
 
 # # App routing
-# if st.session_state['stop_clicked']:
+if st.session_state['stop_clicked']:
     
-#     overlay_image()
-#     time.sleep(5)
-#     second_page()
-    
-    
-# else:
-main_page()
+    overlay_image()
+    time.sleep(5)
+    second_page()
+
+else:
+    main_page()
 
