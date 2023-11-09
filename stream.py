@@ -21,8 +21,8 @@ from deta import Deta
 
 model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
-if 'stop_clicked' not in st.session_state:
-    st.session_state['stop_clicked'] = False
+# if 'stop_clicked' not in st.session_state:
+#     st.session_state['stop_clicked'] = False
 
 project = Deta("d0l6q5gedtr_iUApirur9uViehT3GgPqDStDGyj7xWRF")
 # deta = Deta(st.secrets["data_key "])
@@ -233,8 +233,12 @@ def main_page():
 
     # Stop button
     if st.button('Next'):
-        st.session_state['stop_clicked'] = True
-        st.experimental_rerun()
+        # st.session_state['stop_clicked'] = True
+        # st.experimental_rerun()
+
+        overlay_image()
+        time.sleep(5)
+        second_page()
 
 def second_page():
     st.image('result.png' , width=200)
@@ -329,11 +333,11 @@ def second_page():
 
 def main():
     # Your main app logic...
-    if st.session_state['stop_clicked']:
-        overlay_image()
-        time.sleep(5)
-        second_page()
-    else:
+    # if st.session_state['stop_clicked']:
+    #     overlay_image()
+    #     time.sleep(5)
+    #     second_page()
+    # else:
         main_page()
 
 if __name__ == "__main__":
