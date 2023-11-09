@@ -30,7 +30,7 @@ project = Deta("d0l6q5gedtr_iUApirur9uViehT3GgPqDStDGyj7xWRF")
 # Define the drive to store the files.
 drive_name = 'myspacedrive'
 drive = project.Drive(drive_name)
-uploaded_file = st.file_uploader("Choose a file")
+# uploaded_file = st.file_uploader("Choose a file")
 
 count = 0
 
@@ -269,14 +269,14 @@ def second_page():
         # Optionally, clean up the audio file after processing
 
         # If user attempts to upload a file.
-        bytes_data = uploaded_file.getvalue()
+        bytes_data = audio_file_name.getvalue()
     
         # Show the image filename and image.
-        st.write(f'filename: {uploaded_file.name}')
+        st.write(f'filename: {audio_file_name.name}')
         st.audio(bytes_data)
     
         # Upload the image to deta using put with filename and data.
-        drive.put(uploaded_file.name, data=bytes_data)
+        drive.put(audio_file_name.name, data=bytes_data)
         os.remove(audio_file_name)
     
     
