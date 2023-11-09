@@ -333,23 +333,12 @@ def second_page():
 
 def main():
     # Your main app logic...
-    # if st.session_state['stop_clicked']:
-    #     overlay_image()
-    #     time.sleep(5)
-    #     second_page()
-    # else:
-    #     main_page()
-
-   if st.button('Reset'):
-        # Reset session state variables
-        st.session_state['stop_clicked'] = False
-
+    if st.session_state['stop_clicked']:
         overlay_image()
         time.sleep(5)
         second_page()
-   else:
+    else:
         main_page()
-
 
 if __name__ == "__main__":
     main()
