@@ -15,6 +15,8 @@ import datetime
 import soundfile as sf
 import speech_recognition
 from st_audiorec import st_audiorec
+import speech_recognition as sr
+import os
 
 model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
