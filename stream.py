@@ -28,8 +28,8 @@ project = Deta("d0l6q5gedtr_iUApirur9uViehT3GgPqDStDGyj7xWRF")
 # deta = Deta(st.secrets["data_key "])
 # db = deta.Base("myspacedata")
 # Define the drive to store the files.
-drive_name = 'project_2_drive_1'
-drive = project.Drive(myspacedrive)
+drive_name = 'myspacedrive'
+drive = project.Drive(drive_name)
 uploaded_file = st.file_uploader("Choose a file")
 count = 0
  # object classes
