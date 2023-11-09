@@ -23,7 +23,7 @@ model = YOLO("yolo-Weights/yolov8s.pt")
  # Initialize Streamlit state
 if 'stop_clicked' not in st.session_state:
     st.session_state['stop_clicked'] = False
-deta = Deta(st.secrets["d0l6q5gedtr_iUApirur9uViehT3GgPqDStDGyj7xWRF"])
+deta = Deta(st.secrets["data_key "])
 db = deta.Base("myspacedata")
 count = 0
  # object classes
