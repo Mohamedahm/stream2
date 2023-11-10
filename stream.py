@@ -20,6 +20,14 @@ import os
 from deta import Deta
 from yolo_predictions import YOLO_Pred
 
+
+onnx_model = './best.onnx'
+
+try:
+    self.yolo = cv2.dnn.readNetFromONNX(onnx_model)
+except cv2.error as e:
+    st.write("Error loading ONNX model:", e)
+
 # model = YOLO("yolo-Weights/yolov8s.pt")
 yolo = YOLO_Pred('./best.onnx','./data.yaml')
  # Initialize Streamlit state
