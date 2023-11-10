@@ -116,3 +116,4 @@ soundfile
 PyAudio
 streamlit-audiorec
 deta
+--upgrade opencv-python
