@@ -22,7 +22,7 @@ from yolo_predictions import YOLO_Pred
 
 
 # model = YOLO("yolo-Weights/yolov8s.pt")
-yolo = YOLO_Pred('stream2/best.onnx','data.yaml')
+yolo = YOLO_Pred('best_orginal.onnx','data.yaml')
  # Initialize Streamlit state
 if 'stop_clicked' not in st.session_state:
     st.session_state['stop_clicked'] = False
