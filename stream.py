@@ -21,8 +21,8 @@ from deta import Deta
 from yolo_predictions import YOLO_Pred
 
 
-# model = YOLO("yolo-Weights/yolov8s.pt")
-yolo = YOLO_Pred('best.onnx','data.yaml')
+model = YOLO("yolo-Weights/yolov8s.pt")
+# yolo = YOLO_Pred('best.onnx','data.yaml')
  # Initialize Streamlit state
 if 'stop_clicked' not in st.session_state:
     st.session_state['stop_clicked'] = False
@@ -175,64 +175,62 @@ def overlay_image():
 
 
 ############ video_callback##############
-# def video_frame_callback(frame):
+def video_frame_callback(frame):
     
-#     global captured_frame, flag_capture
+    global captured_frame, flag_capture
 
-#     img = frame.to_ndarray(format="bgr24") if not isinstance(frame, np.ndarray) else frame
-#     results = model(img, stream=True)
-#     for r in results:
-#         boxes = r.boxes
-#         for box in boxes:
+    img = frame.to_ndarray(format="bgr24") if not isinstance(frame, np.ndarray) else frame
+    results = model(img, stream=True)
+    for r in results:
+        boxes = r.boxes
+        for box in boxes:
             
-#             cls = int(box.cls[0])
-#             if classNames[cls] == 'person':
+            cls = int(box.cls[0])
+            if classNames[cls] == 'person':
             
-#                 # bounding box
-#                 x1, y1, x2, y2 = box.xyxy[0]
-#                 x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) 
+                # bounding box
+                x1, y1, x2, y2 = box.xyxy[0]
+                x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) 
         
-#                 cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
+                cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
         
-#                 confidence = math.ceil((box.conf[0]*100))/100
-#                 print("Confidence --->",confidence)
+                confidence = math.ceil((box.conf[0]*100))/100
+                print("Confidence --->",confidence)
         
-#                 # class name
+                # class name
                 
                 
                
-#                 print("Class name -->", classNames[cls])
+                print("Class name -->", classNames[cls])
                 
-#                 # object details
-#                 org = [x1, y1]
-#                 font = cv2.FONT_HERSHEY_SIMPLEX
-#                 fontScale = 1
-#                 color = (255, 0, 0)
-#                 thickness = 2
+                # object details
+                org = [x1, y1]
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                fontScale = 1
+                color = (255, 0, 0)
+                thickness = 2
 
-#                 cv2.putText(img, classNames[cls], org, font, fontScale, color, thickness)
+                cv2.putText(img, classNames[cls], org, font, fontScale, color, thickness)
             
-#     cv2.imwrite('captured_frame.png', img)
+    cv2.imwrite('captured_frame.png', img)
                         
-#     return av.VideoFrame.from_ndarray(img, format="bgr24" )
+    return av.VideoFrame.from_ndarray(img, format="bgr24" )
 #############End of video callback#####################
-def video_frame_callback(frame):
-    # Convert the incoming frame to ndarray if it's not already an ndarray
-    # img = frame.to_ndarray(format="bgr24") if not isinstance(frame, np.ndarray) else frame
-    img = frame.to_ndarray(format="bgr24") 
+# def video_frame_callback(frame):
+#     # Convert the incoming frame to ndarray if it's not already an ndarray
+#     # img = frame.to_ndarray(format="bgr24") if not isinstance(frame, np.ndarray) else frame
+#     img = frame.to_ndarray(format="bgr24") 
 
-    # Apply YOLO predictions to the frame
-    img_pred = yolo.predictions(img)
+#     # Apply YOLO predictions to the frame
+#     img_pred = yolo.predictions(img)
 
-    # Save the processed image to a file
-    cv2.imwrite('captured_frame.png', img_pred)
-    print(img_pred)
+#     # Save the processed image to a file
+#     cv2.imwrite('captured_frame.png', img_pred)
+#     print(img_pred)
     
-    # Return the processed frame as a VideoFrame
-    return av.VideoFrame.from_ndarray(img_pred, format="bgr24")
+#     # Return the processed frame as a VideoFrame
+#     return av.VideoFrame.from_ndarray(img_pred, format="bgr24")
 
-# # Streamlit WebRTC streamer
-# webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
 
 
 # Page layout
